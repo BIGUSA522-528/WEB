@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BIGUSA — Plataforma de Inteligencia de Negocios · Grupo USA 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue-dark:   #176b96;
+    --blue-mid:    #1e5c8a;
+    --blue-light:  #2a7ab5;
+    --gold:        #f5c800;
+    --gold-dark:   #d4a900;
+    --gray-dark:   #4c4c4c;
+    --gray-mid:    #6b7280;
+    --gray-light:  #f3f7fb;
+    --white:       #ffffff;
+    --text:        #1f2937;
+    --border:      #dde6f0;
+    --green:       #16a34a;
+    --orange:      #ea580c;
+    --purple:      #7c3aed;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #eef3f8;
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--blue-dark);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(245,200,0,.08);
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 30%;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.04);
+  }
+  .header-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 36px 40px 30px;
+    position: relative; z-index: 1;
+  }
+  .logo-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+  .logo-badge {
+    background: var(--gold);
+    border-radius: 10px;
+    width: 48px; height: 48px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: #1a1200;
+    flex-shrink: 0;
+  }
+  .logo-text {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 1px;
+  }
+  .logo-sub {
+    font-size: 11px;
+    color: rgba(255,255,255,.6);
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+  .header-tag {
+    display: inline-block;
+    background: rgba(245,200,0,.18);
+    border: 1px solid rgba(245,200,0,.35);
+    color: var(--gold);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+  }
+  .header-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 6px;
+  }
+  .header-subtitle {
+    color: rgba(255,255,255,.65);
+    font-size: 13px;
+    margin-bottom: 28px;
+  }
+  .kpi-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  .kpi {
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 10px;
+    padding: 14px 16px;
+    text-align: center;
+  }
+  .kpi-num {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .kpi-label {
+    font-size: 10px;
+    color: rgba(255,255,255,.55);
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin-top: 4px;
+  }
+
+  /* ── WRAPPER ── */
+  .wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 32px 40px 48px;
+  }
+
+  /* ── CARTA ── */
+  .carta {
+    background: var(--white);
+    border-radius: 12px;
+    border-left: 4px solid var(--blue-dark);
+    padding: 28px 32px;
+    margin-bottom: 28px;
+    box-shadow: 0 1px 6px rgba(0,0,0,.06);
+  }
+  .carta-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--blue-dark);
+    margin-bottom: 14px;
+  }
+  .carta p {
+    color: #374151;
+    font-size: 13.5px;
+    line-height: 1.75;
+    margin-bottom: 10px;
+  }
+  .carta p:last-child { margin-bottom: 0; }
+  .firma {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--gray-mid);
+  }
+  .firma strong {
+    display: block;
+    color: var(--blue-dark);
+    font-weight: 600;
+    font-size: 13.5px;
+  }
+
+  /* ── SECTION ── */
+  .section {
+    margin-bottom: 28px;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .section-bar {
+    width: 4px;
+    height: 22px;
+    background: var(--gold);
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--blue-dark);
+    letter-spacing: .3px;
+  }
+
+  /* ── RESUMEN EJECUTIVO ── */
+  .resumen-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .resumen-card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 18px 20px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    border-top: 3px solid var(--blue-dark);
+  }
+  .resumen-card.gold { border-top-color: var(--gold); }
+  .resumen-card.green { border-top-color: var(--green); }
+  .resumen-card.orange { border-top-color: var(--orange); }
+  .resumen-card-title {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--blue-dark);
+    margin-bottom: 8px;
+  }
+  .resumen-card.gold .resumen-card-title { color: var(--gold-dark); }
+  .resumen-card.green .resumen-card-title { color: var(--green); }
+  .resumen-card.orange .resumen-card-title { color: var(--orange); }
+  .resumen-card p {
+    font-size: 13px;
+    color: #374151;
+    line-height: 1.6;
+  }
+
+  /* ── CARDS GRID ── */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  .card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 18px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.06);
+  }
+  .card-icon {
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+  .card-title {
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--blue-dark);
+    margin-bottom: 6px;
+  }
+  .card p {
+    font-size: 12.5px;
+    color: var(--gray-mid);
+    line-height: 1.55;
+  }
+
+  /* ── FLUJOS ── */
+  .dias-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .dia-card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 14px 12px;
+    text-align: center;
+    box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    border-top: 3px solid var(--blue-dark);
+  }
+  .dia-card.lunes   { border-top-color: #176b96; }
+  .dia-card.martes  { border-top-color: #7c3aed; }
+  .dia-card.mierc   { border-top-color: #ea580c; }
+  .dia-card.jueves  { border-top-color: #dc2626; }
+  .dia-card.viernes { border-top-color: #d97706; }
+
+  .dia-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray-mid);
+    margin-bottom: 4px;
+  }
+  .dia-depto {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--blue-dark);
+    margin-bottom: 8px;
+  }
+  .dia-num {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--gold-dark);
+    line-height: 1;
+  }
+  .dia-flujos {
+    font-size: 10px;
+    color: var(--gray-mid);
+    margin-bottom: 8px;
+  }
+  .dia-alertas {
+    font-size: 11px;
+    color: #374151;
+    text-align: left;
+    line-height: 1.5;
+  }
+  .dia-alertas li { list-style: none; padding-left: 12px; position: relative; }
+  .dia-alertas li::before { content: '·'; position: absolute; left: 2px; color: var(--gold-dark); font-weight: 700; }
+
+  .flujos-total {
+    background: var(--blue-dark);
+    color: var(--white);
+    border-radius: 8px;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+  .flujos-total span {
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  /* ── PROYECCIÓN ── */
+  .proyeccion-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  .proy-card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    position: relative;
+    overflow: hidden;
+  }
+  .proy-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--blue-dark), var(--blue-light));
+  }
+  .proy-card.gold-line::before { background: linear-gradient(90deg, var(--gold-dark), var(--gold)); }
+  .proy-card.green-line::before { background: linear-gradient(90deg, #15803d, var(--green)); }
+
+  .proy-icon { font-size: 24px; margin-bottom: 10px; }
+  .proy-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--blue-dark);
+    margin-bottom: 8px;
+  }
+  .proy-card p {
+    font-size: 12.5px;
+    color: var(--gray-mid);
+    line-height: 1.6;
+  }
+  .proy-tag {
+    display: inline-block;
+    margin-top: 10px;
+    background: var(--gray-light);
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--blue-dark);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ── LICENCIAS ── */
+  .lic-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    font-size: 13px;
+  }
+  .lic-table thead tr {
+    background: var(--blue-mid);
+    color: var(--white);
+  }
+  .lic-table thead th {
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .lic-table tbody tr:nth-child(even) { background: var(--gray-light); }
+  .lic-table tbody tr:hover { background: #dde9f5; }
+  .lic-table td {
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--border);
+    color: #374151;
+  }
+  .lic-table tfoot tr {
+    background: var(--gold);
+  }
+  .lic-table tfoot td {
+    padding: 12px 16px;
+    font-weight: 700;
+    color: #1a1200;
+    font-size: 13.5px;
+    border: none;
+  }
+  .tc-note {
+    font-size: 11px;
+    color: var(--gray-mid);
+    margin-top: 8px;
+    text-align: right;
+  }
+
+  /* ── TECH STACK ── */
+  .tech-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  .tech-card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+    box-shadow: 0 1px 4px rgba(0,0,0,.06);
+  }
+  .tech-icon { font-size: 26px; margin-bottom: 6px; }
+  .tech-name {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--blue-dark);
+    margin-bottom: 4px;
+  }
+  .tech-desc { font-size: 11.5px; color: var(--gray-mid); line-height: 1.5; }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--gray-dark);
+    color: rgba(255,255,255,.55);
+    text-align: center;
+    padding: 18px 40px;
+    font-size: 11px;
+    letter-spacing: .5px;
+  }
+  .footer strong { color: rgba(255,255,255,.85); }
+
+  @media print {
+    body { background: white; }
+    .wrapper { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<div class="header">
+  <div class="header-inner">
+    <div class="logo-row">
+
+
+<tr><td style="background:#176b96; padding:30px 40px; text-align:center;">
+  <img src="https://raw.githubusercontent.com/BIGUSA522-528/BIGUSA/main/LOGO%20BIGUSA-14%20LETRA%20NEGRA.png" width="260" style="display:block; margin:0 auto; height:auto;" alt="BIGUSA"></div>
+      <div>
+      <div class="logo-text">	
+    </div>
+    </div>
+    <div class="header-tag">Proyecto Estratégico 2026</div>
+    <div class="header-title">Evolución BIGUSA</div>
+    <div class="header-subtitle">Informe ejecutivo</div>
+    <div class="kpi-row">
+      <div class="kpi"><div class="kpi-num">6</div><div class="kpi-label">Distribuidores</div></div>
+      <div class="kpi"><div class="kpi-num">73</div><div class="kpi-label">Flujos Automatizados</div></div>
+      <div class="kpi"><div class="kpi-num">5</div><div class="kpi-label">Departamentos</div></div>
+      <div class="kpi"><div class="kpi-num">4</div><div class="kpi-label">Tecnologías</div></div>
+    </div>
+  </div>
+</div>
+<div class="wrapper">
+
+
+<!-- ── LICENCIAS ACTUALES ── -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <div class="section-title">Licencias Actuales en proyecto BIGUSA</div>
+    </div>
+    <table class="lic-table">
+      <thead>
+        <tr>
+          <th>Licencia</th>
+		   <th>Aplicacion y Uso de la herramienta</th>
+          <th>USD / mes</th>
+          <th>MXN / mes</th>
+         
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#0066FF"/><path d="M4 14l4-4 4 4 8-8" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="20" cy="6" r="3" fill="#00B4F0"/></svg>
+              <span><strong>Power Automate Premium</strong></span>
+            </div>
+          </td>
+         <td>Motor de automatización que conecta Power BI con Outlook — ejecuta los 73 flujos de alertas operativas y de cobranza de lunes a viernes en los 6 distribuidores · En desarrollo: prueba piloto BDC Posventa con recordatorios automáticos vía correo y WhatsApp</td>
+        <td>$15.75</td><td>$276.51</td>
+		</tr>
+        <tr>
+          <td>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#F2C811"/><rect x="4" y="10" width="6" height="10" rx="1" fill="#333"/><rect x="12" y="6" width="6" height="14" rx="1" fill="#333"/><rect x="4" y="4" width="6" height="4" rx="1" fill="#333" opacity=".4"/></svg>
+              <span><strong>Power BI Premium Per User</strong></span>
+            </div>
+          </td>
+          <td>Licencia de desarrollo que permite crear, publicar y administrar todos los tableros e informes de BIGUSA con capacidades avanzadas de IA y actualización de datos</td>
+         <td>$25.20</td><td>$442.42</td>
+	   </tr>
+        <tr>
+          <td>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#0078D4"/><path d="M12 4C7.6 4 4 7.6 4 12s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 3c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm0 11.2c-2.7 0-5-1.4-6.4-3.4.7-1.4 3.4-2.2 6.4-2.2s5.7.8 6.4 2.2c-1.4 2-3.7 3.4-6.4 3.4z" fill="white"/></svg>
+              <span><strong>Azure (Tenant)</strong></span>
+            </div>
+          </td>
+          <td>Infraestructura base del tenant de Microsoft — gestiona identidades, seguridad de acceso y permisos por rol para cada distribuidor dentro de la plataforma BIGUSA</td>
+          <td>$29.00</td><td>$509.14</td>
+		</tr>
+        <tr>
+          <td>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#F2C811"/><rect x="4" y="12" width="4" height="8" rx="1" fill="#333"/><rect x="10" y="8" width="4" height="12" rx="1" fill="#333"/><rect x="16" y="4" width="4" height="16" rx="1" fill="#333"/></svg>
+              <span><strong>Power BI Pro</strong></span>
+            </div>
+          </td>
+          <td>8 Licencia de visualización — 2 cuentas Dirección + 1 por distribuidor (C.QRO, C.León, Matriz, GTO, Sur, SMA) — $295 MXN por agencia · acceso a todos los tableros BIGUSA</td>
+        <td>$134.43</td><td>$2,360.00</td>
+		</tr>
+        <tr>
+          <td>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#D83B01"/><path d="M6 8h12M6 12h12M6 16h8" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+              <span><strong>Microsoft 365 Empresa Básico</strong></span>
+            </div>
+          </td>
+          <td>Correo corporativo BIGUSA para envío de reportes automatizados de Power Automate · Habilita envío a clientes en proyecto piloto BDC Posventa para recordatorios de reagendado de servicio</td>
+       <td>$6.03</td><td>$106.00</td>
+	   </tr>
+        <tr>
+          <td>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#10a37f"/><path d="M7 12.5C7 9.46 9.46 7 12.5 7S18 9.46 18 12.5c0 1.5-.6 2.9-1.5 3.9L17 18h-4.5C9.46 18 7 15.54 7 12.5z" fill="white"/><path d="M10 12h5M12.5 9.5v5" stroke="#10a37f" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <span><strong>Chat GPT Pro / OpenAI</strong></span>
+            </div>
+          </td>
+          <td>Consultoría y asesoría — herramienta de apoyo para desarrollo, análisis y soporte técnico del proyecto BIGUSA</td>
+        <td>$200.00</td><td>$3,514.00</td>
+		</tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2"><strong>TOTAL ACTUAL</strong></td>
+          <td><strong>$410.41 USD</strong></td>
+          <td><strong>$7,209.07 MXN</strong></td>
+        </tr>
+      </tfoot>
+    </table>
+    <div class="tc-note">* Tipo de cambio referencial: $17.57 MXN/USD</div>
+  </div>
+
+  <!-- ── LICENCIAS PROPUESTAS ── -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <div class="section-title">Ajuste en Inversión de Licencias — Escenario Propuesto para Evolución BIGUSA</div>
+    </div>
+    <table class="lic-table">
+      <thead>
+        <tr>
+          <th>Licencia</th>
+           <th>Aplicacion y Uso de la herramienta</th>
+		  <th>USD / mes</th>
+          <th>MXN / mes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#0066FF"/><path d="M4 14l4-4 4 4 8-8" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="20" cy="6" r="3" fill="#00B4F0"/></svg>
+              <span><strong>Power Automate Premium</strong></span>
+            </div>
+          </td>
+          <td>Motor de automatización que conecta Power BI con Outlook — ejecuta los 73 flujos de alertas operativas y de cobranza de lunes a viernes en los 6 distribuidores · En desarrollo: prueba piloto BDC Posventa con recordatorios automáticos vía correo y WhatsApp</td>
+         <td>$15.75</td><td>$276.51</td>
+		</tr>
+        <tr>
+          <td>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#F2C811"/><rect x="4" y="10" width="6" height="10" rx="1" fill="#333"/><rect x="12" y="6" width="6" height="14" rx="1" fill="#333"/><rect x="4" y="4" width="6" height="4" rx="1" fill="#333" opacity=".4"/></svg>
+              <span><strong>Power BI Premium Per User</strong></span>
+            </div>
+          </td>
+          <td>Licencia de desarrollo que permite crear, publicar y administrar todos los tableros e informes de BIGUSA con capacidades avanzadas de IA y actualización de datos</td>
+           <td>$25.20</td><td>$442.42</td>
+		</tr>
+        <tr>
+          <td>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#0078D4"/><path d="M12 4C7.6 4 4 7.6 4 12s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 3c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm0 11.2c-2.7 0-5-1.4-6.4-3.4.7-1.4 3.4-2.2 6.4-2.2s5.7.8 6.4 2.2c-1.4 2-3.7 3.4-6.4 3.4z" fill="white"/></svg>
+              <span><strong>Azure (Tenant)</strong></span>
+            </div>
+          </td>
+          <td>Infraestructura base del tenant de Microsoft — gestiona identidades, seguridad de acceso y permisos por rol para cada distribuidor dentro de la plataforma BIGUSA</td>
+        <td>$29.00</td><td>$509.14</td>
+		</tr>
+        <tr>
+          <td>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#F2C811"/><rect x="4" y="12" width="4" height="8" rx="1" fill="#333"/><rect x="10" y="8" width="4" height="12" rx="1" fill="#333"/><rect x="16" y="4" width="4" height="16" rx="1" fill="#333"/></svg>
+              <span><strong>Power BI Pro</strong></span>
+            </div>
+          </td>
+          <td>8 Licencia de visualización — 2 cuentas Dirección  + 1 por distribuidor (C.QRO, C.León, Matriz, GTO, Sur, SMA) — $295 MXN por agencia · acceso a todos los tableros BIGUSA</td>
+        <td>$134.43</td><td>$2,360.00</td>
+		</tr>
+        <tr>
+          <td>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#D83B01"/><path d="M6 8h12M6 12h12M6 16h8" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+              <span><strong>Microsoft 365 Empresa Básico</strong></span>
+            </div>
+          </td>
+          <td>Correo corporativo BIGUSA para envío de reportes automatizados de Power Automate · Habilita envío a clientes en proyecto piloto BDC Posventa para recordatorios de reagendado de servicio</td>
+       <td>$6.03</td><td>$106.00</td>
+	   </tr>
+        <tr style="background:#f0fdf4;">
+          <td>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#0078D4"/><path d="M4 12C4 7.6 7.6 4 12 4s8 3.6 8 8-3.6 8-8 8H4l2.4-2.4A7.9 7.9 0 0 1 4 12z" fill="#50E6FF" opacity=".7"/><path d="M8 12h8M12 8v8" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg>
+              <span style="font-weight:600;color:#15803d;">Microsoft Fabric F4 <span style="font-size:10px;font-weight:400;color:#6b7280;">(reserva 1 año · nuevo)</span></span>
+            </div>
+          </td>
+          <td>Plataforma unificada con Data Warehouse, Data Engineering y Power BI · Copilot habilitado en flujos de automatización · 4 TB de almacenamiento en OneLake · Escalable a F8/F16</td>
+        <td>$310.00</td><td>$5,446.70</td>
+	   </tr>
+        <tr style="background:#faf5ff;">
+          <td>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#6264A7"/><path d="M14 9a3 3 0 1 0-4 0M8 20v-2a4 4 0 0 1 8 0v2" stroke="white" stroke-width="1.8" stroke-linecap="round"/><rect x="13" y="13" width="7" height="5" rx="1.5" fill="#464EB8"/><path d="M14 15h5M14 17h3" stroke="white" stroke-width="1.2" stroke-linecap="round"/></svg>
+              <span style="font-weight:600;color:#7c3aed;">Teams Premium <span style="font-size:10px;font-weight:400;color:#6b7280;">(nuevo)</span></span>
+            </div>
+          </td>
+          <td>Los 8 distribuidores consultan indicadores de BIGUSA directamente por chat en Teams · Resúmenes automáticos e inteligencia en reuniones con IA</td>
+          <td>$96.00</td><td>$1,686.72</td>
+		</tr>
+        <tr style="background:#f0fff4;">
+          <td>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <!-- Logo WhatsApp SVG oficial -->
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="24" height="24" rx="5" fill="#25D366"/>
+                <path d="M12 4.5C7.86 4.5 4.5 7.86 4.5 12c0 1.34.35 2.6.96 3.7L4.5 19.5l3.94-.94A7.47 7.47 0 0 0 12 19.5c4.14 0 7.5-3.36 7.5-7.5S16.14 4.5 12 4.5zm3.9 10.56c-.17.47-.98.9-1.36.95-.35.05-.79.07-1.27-.08-.29-.09-.67-.22-1.15-.43-2.02-.87-3.34-2.9-3.44-3.04-.1-.14-.82-1.09-.82-2.07 0-.98.51-1.47.7-1.67.19-.2.41-.25.55-.25.14 0 .28 0 .4.01.13.01.3-.05.47.36.17.42.58 1.42.63 1.52.05.1.08.22.02.35-.06.13-.1.22-.19.33-.1.12-.2.26-.29.35-.1.1-.2.2-.09.39.12.2.52.86 1.12 1.39.77.68 1.42.89 1.62.99.2.1.32.08.44-.05.12-.13.51-.59.64-.79.14-.2.28-.17.47-.1.19.07 1.2.57 1.4.67.2.1.34.15.39.23.05.08.05.47-.12.94z" fill="white"/>
+              </svg>
+              <span style="font-weight:600;color:#128C7E;">WhatsApp Cloud API <span style="font-size:10px;font-weight:400;color:#6b7280;">(Meta · pago por uso)</span></span>
+            </div>
+          </td>
+          <td>API oficial de Meta para mensajes automatizados a clientes · Sin servidor ni proveedor externo — integración directa con Power Automate · <strong>Utility</strong> (recordatorios): $0.19 MXN/msg · <strong>Marketing</strong> (campañas): $0.58 MXN/msg · Estimado 1,000 msgs/mes · Sin cuota fija, solo pagas mensajes entregados</td>
+            <td>$10 – $30</td><td>$190 – $580</td>
+		</tr>
+        <tr style="background:#f0fdf4;">
+          <td>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#10a37f"/><path d="M7 12.5C7 9.46 9.46 7 12.5 7S18 9.46 18 12.5c0 1.5-.6 2.9-1.5 3.9L17 18h-4.5C9.46 18 7 15.54 7 12.5z" fill="white"/><path d="M10 12h5M12.5 9.5v5" stroke="#10a37f" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <span style="font-weight:600;color:#16a34a;">Chat GPT Plus <span style="font-size:10px;font-weight:400;color:#dc2626;text-decoration:line-through;">Pro $200</span> <span style="font-size:10px;font-weight:400;color:#6b7280;">→ optimizado</span></span>
+            </div>
+          </td>
+          <td>Reducción de plan Pro ($200) a Plus ($20) · Consultoría y asesoría puntual · Ahorro de <strong>$180 USD / $3,162.60 MXN</strong> mensuales que financia Fabric F4 y Teams Premium</td>
+         <td>$20.00</td><td>$351.40</td>
+	   </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2"><strong>TOTAL PROPUESTO</strong></td>
+          <td><strong>$666 USD</strong></td>
+          <td><strong>$11,758 MXN</strong></td>
+        </tr>
+		   </tfoot>
+    </table>
+    <div class="tc-note">* Tipo de cambio referencial: $17.57 MXN/USD · Fabric F4 reserva anual ~41% ahorro vs PAYG $525 USD/mes · Teams Premium $12 USD × 8 usuarios · ChatGPT Plus $200 USD/mes vs $20 USD/mes</div>
+  </div>
+
+  <!-- ── PROYECCIÓN ── -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <div class="section-title">Proyección a Corto Plazo</div>
+    </div>
+    <div class="proyeccion-grid">
+      <div class="proy-card">
+        <div class="proy-icon">🔧</div>
+        <div class="proy-title">Posventa</div>
+        <p>Envío automatizado de recordatorios por correo y WhatsApp a clientes para su próximo servicio, alineado con requerimientos del BDC Posventa para incrementar afluencia al taller.</p>
+        <span class="proy-tag">BDC Servicio</span>
+      </div>
+      <div class="proy-card gold-line">
+        <div class="proy-icon">💳</div>
+        <div class="proy-title">Cobranza</div>
+        <p>Comunicación directa con clientes de CXC vencida vía correo y WhatsApp, apoyando al área de Cobranza en la recuperación de cartera sin carga adicional al personal.</p>
+        <span class="proy-tag">CXC</span>
+      </div>
+      <div class="proy-card green-line">
+        <div class="proy-icon">🚗</div>
+        <div class="proy-title">Ventas Nuevos</div>
+        <p>Campañas automatizadas de renovación vehicular segmentadas por perfil, integradas con la IA de Adán para que la prospección sea atendida en tiempo real por el BDC de Ventas.</p>
+        <span class="proy-tag">IA · BDC Ventas</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ── BENEFICIOS ── -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <div class="section-title">Beneficios Esperados</div>
+    </div>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon">⚙️</div>
+        <div class="card-title">Operativos</div>
+        <p>Reducción de tareas manuales · Menor margen de error humano · Mayor velocidad de respuesta · Procesos automáticos y consistentes</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📈</div>
+        <div class="card-title">Comerciales</div>
+        <p>Mayor recuperación de cartera · Incremento en oportunidades de venta · Mejor seguimiento a clientes · Fidelización de base instalada</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🧭</div>
+        <div class="card-title">Estratégicos</div>
+        <p>Información centralizada · Decisiones basadas en datos reales · Protección de activos de información · Base para futura Inteligencia Artificial</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SEGURIDAD ── -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <div class="section-title">Protección y Seguridad de la Información</div>
+    </div>
+    <div class="resumen-grid">
+      <div class="resumen-card" style="border-top-color:#dc2626">
+        <div class="resumen-card-title" style="color:#dc2626">❌ Modelo Tradicional (Actual)</div>
+        <p>Se exportan bases de datos completas a Excel y se comparten por correo o WhatsApp. Múltiples personas tienen acceso a toda la información sin trazabilidad, con riesgo de fuga de datos de clientes.</p>
+      </div>
+      <div class="resumen-card green">
+        <div class="resumen-card-title">✅ Modelo Propuesto (Nuevo)</div>
+        <p>Las campañas se ejecutan automáticamente desde la plataforma. Los usuarios no necesitan ver ni descargar bases de clientes. Control total de accesos con cumplimiento de buenas prácticas de seguridad.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ── RESUMEN EJECUTIVO ── -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <div class="section-title">Resumen Ejecutivo</div>
+    </div>
+    <div class="resumen-grid">
+      <div class="resumen-card">
+        <div class="resumen-card-title">✅ Situación Actual</div>
+        <p>Se ha concluido la igualación de información del área comercial, CXC e inventarios de Autos Nuevos, Seminuevos y Refacciones contra DCA, garantizando una base de datos confiable y unificada.</p>
+      </div>
+      <div class="resumen-card green">
+        <div class="resumen-card-title">✅ Históricos Completados</div>
+        <p>Se concluye la consolidación de históricos de todos los departamentos — Nuevos, Seminuevos, Servicio, HYP, Refacciones y CXC — en los 6 distribuidores, permitiendo análisis comparativos por período, detección de tendencias y seguimiento de desviaciones operativas desde 2023.</p>
+      </div>
+      <div class="resumen-card green">
+        <div class="resumen-card-title">🚀 Innovaciones Implementadas</div>
+        <p>Se desarrollaron notificadores automáticos vía correo electrónico para todos los departamentos: Ventas, FNE, Órdenes de Servicio y CXC — activos en los 6 distribuidores.</p>
+      </div>
+      <div class="resumen-card orange">
+        <div class="resumen-card-title">📅 Proyección a Corto Plazo</div>
+        <p>Tres iniciativas estratégicas: automatización de Posventa (recordatorios de servicio), Cobranza (CXC vencida vía correo/WhatsApp) y Ventas Nuevos (campañas con IA de Adán).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FLUJOS AUTOMATIZADOS ── -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <div class="section-title">Sistema de Alertas — 73 Flujos Automatizados</div>
+    </div>
+    <div class="dias-grid">
+      <div class="dia-card lunes">
+        <div class="dia-label">Lunes</div>
+        <div class="dia-depto">NUEVOS</div>
+        <div class="dia-num">18</div>
+        <div class="dia-flujos">flujos</div>
+        <ul class="dia-alertas">
+          <li>Utilidad 0% a 2.5%</li>
+          <li>FNE Nuevos (+20 días)</li>
+          <li>CXC Vencido</li>
+        </ul>
+      </div>
+      <div class="dia-card martes">
+        <div class="dia-label">Martes</div>
+        <div class="dia-depto">SEMINUEVOS</div>
+        <div class="dia-num">18</div>
+        <div class="dia-flujos">flujos</div>
+        <ul class="dia-alertas">
+          <li>Utilidad 0% a 2.5%</li>
+          <li>FNE Seminuevos (+15 d)</li>
+          <li>CXC Vencido</li>
+        </ul>
+      </div>
+      <div class="dia-card mierc">
+        <div class="dia-label">Miércoles</div>
+        <div class="dia-depto">SERVICIO</div>
+        <div class="dia-num">18</div>
+        <div class="dia-flujos">flujos</div>
+        <ul class="dia-alertas">
+          <li>Órdenes Abiertas</li>
+          <li>Term. Sin Facturar</li>
+          <li>CXC Vencido</li>
+        </ul>
+      </div>
+      <div class="dia-card jueves">
+        <div class="dia-label">Jueves</div>
+        <div class="dia-depto">H &amp; P</div>
+        <div class="dia-num">9</div>
+        <div class="dia-flujos">flujos</div>
+        <ul class="dia-alertas">
+          <li>Órdenes Abiertas</li>
+          <li>Term. Sin Facturar</li>
+          <li>CXC Vencido</li>
+        </ul>
+      </div>
+      <div class="dia-card viernes">
+        <div class="dia-label">Viernes</div>
+        <div class="dia-depto">REFACCIONES</div>
+        <div class="dia-num">10</div>
+        <div class="dia-flujos">flujos</div>
+        <ul class="dia-alertas">
+          <li>CXC Vencido Ref.</li>
+          <li>CXC Vencido Otros</li>
+        </ul>
+      </div>
+    </div>
+    <div class="flujos-total">
+      <span>73 FLUJOS</span> &nbsp;|&nbsp; <span>5 DÍAS</span> &nbsp;|&nbsp; <span>6 DISTRIBUIDORES</span> &nbsp;|&nbsp; Horario: 9:00 – 9:06 hrs &nbsp;|&nbsp; Ejecución automática Lunes–Viernes
+    </div>
+  </div>
+
+</div>
+<div class="footer">
+  <strong>BIGUSA © 2026</strong> &nbsp;·&nbsp; Plataforma de Inteligencia de Negocios · Grupo USA &nbsp;·&nbsp;
+  <strong></strong>
+</div>
+
+</body>
+</html>
